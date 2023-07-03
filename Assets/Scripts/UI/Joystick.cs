@@ -5,19 +5,30 @@ namespace UI
 {
     public class Joystick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
     {
+        [SerializeField] private RectTransform centerTransform;
+        [SerializeField] private RectTransform backgroundTransform;
+        [SerializeField] private RectTransform thumbStickTransform;
+        
         public void OnDrag(PointerEventData eventData)
         {
-            throw new System.NotImplementedException();
+            Vector2 touchPosition = eventData.position;
+            Vector2 centerPosition = backgroundTransform.position;
+
+            Vector2 localOffset =
+                Vector2.ClampMagnitude(touchPosition - centerPosition, backgroundTransform.sizeDelta.x / 2);
+            thumbStickTransform.position = centerPosition + localOffset;
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            throw new System.NotImplementedException();
+            backgroundTransform.position = eventData.position;
+            thumbStickTransform.position = eventData.position;
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            throw new System.NotImplementedException();
+            backgroundTransform.position = centerTransform.position;
+            thumbStickTransform.position = backgroundTransform.position;
         }
     }    
 }

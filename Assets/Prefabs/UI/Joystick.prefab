@@ -173,6 +173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802ff648518b2444cab82326557b000f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  centerTransform: {fileID: 1360488897430527891}
+  backgroundTransform: {fileID: 358869990611776559}
+  thumbStickTransform: {fileID: 5213278422410312160}
 --- !u!1 &8610298435924093376
 GameObject:
   m_ObjectHideFlags: 0
